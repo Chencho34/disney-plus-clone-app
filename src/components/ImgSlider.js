@@ -21,6 +21,12 @@ function ImgSlider() {
             <Wrap>
                 <img src='/images/slider-badag.jpg' alt='img'/>
             </Wrap>      
+            <Wrap>
+                <img src='/images/slider-scale.jpg' alt='img'/>
+            </Wrap>      
+            <Wrap>
+                <img src='/images/slider-scales.jpg' alt='img'/>
+            </Wrap>      
         </Carousel>
     );
 }
