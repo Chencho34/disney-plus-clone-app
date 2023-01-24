@@ -42,8 +42,9 @@ const Nav = styled.nav`
     height: 70px;
     background-color: #090b13;
     display: flex;
-    align-items: center;;
+    align-items: center;
     padding: 0 36px;
+    /* overflow-x: hidden; */
 `;
 
 const Logo = styled.img`

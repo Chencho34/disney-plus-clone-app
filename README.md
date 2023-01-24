@@ -48,4 +48,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Librerias Implementadas
 
-Syled Components
+Styled-Components
+
+react-slick
+npm install slick-carousel
