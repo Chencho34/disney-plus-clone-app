@@ -8,7 +8,7 @@ function Header () {
             <NavMenu>
                 <a>
                     <img src="/images/home-icon.svg"/>
-                    <span>HOME</span>
+                    <span>Home</span>
                 </a>
                 <a>
                     <img src="/images/search-icon.svg"/>
@@ -41,6 +41,7 @@ export default Header;
 const Nav = styled.nav`
     height: 70px;
     background-color: #090b13;
+    /* background-color: black; */
     display: flex;
     align-items: center;
     padding: 0 36px;

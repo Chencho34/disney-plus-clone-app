@@ -52,3 +52,6 @@ Styled-Components
 
 react-slick
 npm install slick-carousel
+
+React Router Dom
+npm i react-router-dom
