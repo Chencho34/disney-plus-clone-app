@@ -5,25 +5,25 @@ function Detail() {
   return (
     <Container>
       <Background>
-        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bao-pixar-animated-short-incredibles-2-interview-8-1529413816.jpg"></img>
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bao-pixar-animated-short-incredibles-2-interview-8-1529413816.jpg" alt="background-img"></img>
       </Background>
       <ImgTitle>
-        <img src="" />
+        <img src="" alt=""/>
       </ImgTitle>
       <Controls>
         <PlayButton>
-          <img src="/images/play-icon-black.png" />
+          <img src="/images/play-icon-black.png" alt="play-icon"/>
           <span>PLAY</span>
         </PlayButton>
         <TrailerButton>
-          <img src="/images/play-icon-white.png" />
+          <img src="/images/play-icon-white.png" alt="play-icon"/>
           <span>Trailer</span>
         </TrailerButton>
         <AddButton>
           <span>+</span>
         </AddButton>
         <GroupWatchButton>
-          <img src="/images/group-icon.png" />
+          <img src="/images/group-icon.png"  alt="group-icon"/>
         </GroupWatchButton>
       </Controls>
       <Subtitle>2018 • 7m • Family, Fantasy, Kids, Animation</Subtitle>
@@ -40,9 +40,11 @@ function Detail() {
 export default Detail;
 
 const Container = styled.section`
-  min-height: calc(100vh - 70px);
+  /* min-height: calc(100vh - 70px); */
+  /* min-height: calc(100vh - 110px); */
   padding: 0 calc(3.5vw + 5px);
   position: relative;
+  /* background-color: #fff; */
 `;
 
 const Background = styled.div`
@@ -67,6 +69,8 @@ const ImgTitle = styled.div`
   min-height: 170px;
   width: 35vw;
   min-width: 200px;
+  margin: 40px 0;
+  /* margin-top: 40px; */
 
   img {
     width: 100%;
@@ -140,4 +144,5 @@ const Description = styled.div`
   font-size: 20px;
   margin-top: 16px;
   color: rgb(249, 249, 249);
+  max-width: 760px;
 `;

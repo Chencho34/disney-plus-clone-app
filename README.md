@@ -55,3 +55,7 @@ npm install slick-carousel
 
 React Router Dom
 npm i react-router-dom
+
+Firebase
+npm i firebase
+npm i firebase-tools
