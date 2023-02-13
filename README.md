@@ -59,3 +59,6 @@ npm i react-router-dom
 Firebase
 npm i firebase
 npm i firebase-tools
+
+npm install -g node-firestore-import-export
+
