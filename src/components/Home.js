@@ -5,8 +5,13 @@ import Viewers from "./Viewers";
 import Movies from "./Movies";
 import db from "../firebase";
 import { doc, onSnapshot, query, where, collection, QuerySnapshot } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setMovies } from "../features/movie/movieSlice";
 
 function Home() {
+
+  const dispatch = useDispatch();
+
   //! NO FUNCIONA
   // useEffect(() => {
   //   db.collection("Movies").onSnapshot((snapshot) => {
@@ -53,7 +58,8 @@ useEffect(() => {
       return {id: doc.id, ...doc.data()}
     })
     console.log(tempMovies)
-  })
+    dispatch(setMovies(tempMovies));
+  }) 
 }, []);
 
 
