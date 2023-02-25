@@ -4,7 +4,7 @@ import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Movies from "./Movies";
 import db from "../firebase";
-import { doc, onSnapshot, query, where, collection, QuerySnapshot } from "firebase/firestore";
+import { doc, onSnapshot, query, where, collection, querySnapshot } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setMovies } from "../features/movie/movieSlice";
 
@@ -57,7 +57,7 @@ useEffect(() => {
       // console.log({id: doc.id, ...doc.data()})
       return {id: doc.id, ...doc.data()}
     })
-    console.log(tempMovies)
+    // console.log(tempMovies)
     dispatch(setMovies(tempMovies));
   }) 
 }, []);

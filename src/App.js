@@ -16,20 +16,20 @@ import { async } from "@firebase/util";
 function App() {
 
 
-  const API_URL = 'https://api.themoviedb.org/3';
-  const API_KEY = 'd55f85a5233a7b2b3f832e888347976d';
-  const IMAGE_PATH = 'https://image.tmdb.org/t/p/original';
-  const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
+  // const API_URL = 'https://api.themoviedb.org/3';
+  // const API_KEY = 'd55f85a5233a7b2b3f832e888347976d';
+  // const IMAGE_PATH = 'https://image.tmdb.org/t/p/original';
+  // const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
 
   //Variables de estado
-  const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  // const [movies, setMovies] = useState([]);
+  // const [searchKey, setSearchKey] = useState('');
 
-  // function peticion
-  const fetchMovies = async(searchKey) => {
-    const type = searchKey ? 'search' : 'discover';
+  // // function peticion
+  // const fetchMovies = async(searchKey) => {
+  //   const type = searchKey ? 'search' : 'discover';
     
-  }
+  // }
 
   return (
     <div className="App">
@@ -37,7 +37,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="login" element={<Login />} />
-          <Route path="detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

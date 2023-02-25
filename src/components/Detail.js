@@ -1,38 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
+import { getDoc, doc, onSnapshot, query, where, collection, querySnapshot } from "firebase/firestore";
+import Movies from "./Movies";
 
 function Detail() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState();
+
+  // useEffect(() => {
+  //   db.collection("Movies")
+  //   .doc(id)
+  //   .get()
+  //   .the((doc) => {
+  //     if(doc.exists) {
+  //       setMovie(doc.data())
+  //     } else {
+
+  //     }
+  //   })
+  // }, [])
+
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const docRef = doc(db, "Movies", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setMovie(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.log("Error getting movie:", error);
+      }
+    };
+    fetchMovie();
+  }, [id]);
+
+  console.log("Movie: ", movie)
+
+  // const {BackgroundImg,TitleImg} = movie;
+  
+  
   return (
     <Container>
-      <Background>
-        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bao-pixar-animated-short-incredibles-2-interview-8-1529413816.jpg" alt="background-img"></img>
-      </Background>
-      <ImgTitle>
-        <img src="" alt=""/>
-      </ImgTitle>
-      <Controls>
-        <PlayButton>
-          <img src="/images/play-icon-black.png" alt="play-icon"/>
-          <span>PLAY</span>
-        </PlayButton>
-        <TrailerButton>
-          <img src="/images/play-icon-white.png" alt="play-icon"/>
-          <span>Trailer</span>
-        </TrailerButton>
-        <AddButton>
-          <span>+</span>
-        </AddButton>
-        <GroupWatchButton>
-          <img src="/images/group-icon.png"  alt="group-icon"/>
-        </GroupWatchButton>
-      </Controls>
-      <Subtitle>2018 • 7m • Family, Fantasy, Kids, Animation</Subtitle>
-      <Description>
-        El cortometraje trata sobre una anciana y solitaria madre
-        chino-canadiense, que padece el síndrome del nido vacío, que recibe una
-        inesperada segunda oportunidad de maternidad cuando hace un bollo al
-        vapor a la vida.
-      </Description>
+      {movie ? (
+        <React.Fragment>
+          <Background>
+            <img src={movie.BackgroundImg} alt="background-img"></img>
+          </Background>
+          <ImgTitle>
+            <img src={movie.TitleImg} alt="" />
+          </ImgTitle>
+          <Controls>
+            <PlayButton>
+              <img src="/images/play-icon-black.png" alt="play-icon" />
+              <span>PLAY</span>
+            </PlayButton>
+            <TrailerButton>
+              <img src="/images/play-icon-white.png" alt="play-icon" />
+              <span>Trailer</span>
+            </TrailerButton>
+            <AddButton>
+              <span>+</span>
+            </AddButton>
+            <GroupWatchButton>
+              <img src="/images/group-icon.png" alt="group-icon" />
+            </GroupWatchButton>
+          </Controls>
+          <Subtitle>
+            {movie.Genres}  
+          </Subtitle>
+          <Description>
+            {movie.Description}
+          </Description>
+        </React.Fragment>
+      ) : (
+        <p>Loading movie...</p>
+      )}
     </Container>
   );
 }
@@ -49,7 +96,6 @@ const Container = styled.section`
 
 const Background = styled.div`
   position: fixed;
-  /* top: 70px; */
   top: 0;
   left: 0;
   bottom: 0;
@@ -58,9 +104,10 @@ const Background = styled.div`
   z-index: -1;
 
   img {
+    margin-top: 70px;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-size: cover;
   }
 `;
 
@@ -76,7 +123,7 @@ const ImgTitle = styled.div`
     width: 100%;
     height: 100%;
     object-fit: contain;
-    background-color: red;
+    /* background-color: red; */
   }
 `;
 
