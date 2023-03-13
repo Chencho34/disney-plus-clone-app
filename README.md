@@ -49,15 +49,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Librerias Implementadas
 
 * [Styled-Components](https://styled-components.com/)
-`npm i styled-components`
 
-* react-slick:
-`npm install slick-carousel`
+* [react-slick](https://react-slick.neostack.com/)
 
-* React Router Dom:
-`npm i react-router-dom`
+* [React Router Dom](https://www.npmjs.com/package/react-slick)
 
-* Firebase:
+* [Firebase](https://www.npmjs.com/package/firebase)
 `npm i firebase`
 `npm i firebase-tools`
 `npm i -g node-firestore-import-export`
