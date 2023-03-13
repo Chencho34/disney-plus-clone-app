@@ -48,7 +48,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Librerias Implementadas
 
-* Styled-Components:
+* [Styled-Components](https://styled-components.com/)
 `npm i styled-components`
 
 * react-slick:
