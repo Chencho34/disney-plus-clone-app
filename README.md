@@ -58,9 +58,7 @@ Styled-Components
 
 * Firebase
 `npm i firebase`
-
 `npm i firebase-tools`
-
 `npm i -g node-firestore-import-export`
 
 
