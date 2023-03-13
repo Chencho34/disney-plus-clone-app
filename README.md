@@ -50,15 +50,20 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Styled-Components
 
-react-slick
-npm install slick-carousel
+* react-slick
+`npm install slick-carousel`
 
-React Router Dom
-npm i react-router-dom
+* React Router Dom
+`npm i react-router-dom`
 
-Firebase
-npm i firebase
-npm i firebase-tools
+* Firebase
+`npm i firebase`
 
-npm install -g node-firestore-import-export
+`npm i firebase-tools`
+
+`npm i -g node-firestore-import-export`
+
+
+
+
 
