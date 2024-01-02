@@ -5,7 +5,7 @@ function Viewers() {
   return (
     <Container>
       <Wrap>
-        <img src="/images/viewers-disney.png" alt="img"/>
+        <img src="/images/viewers-disney.png" alt="img" />
       </Wrap>
       <Wrap>
         <img src="/images/viewers-pixar.png" alt="img" />

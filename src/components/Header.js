@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-// import { getAuth, signInWithPopup, GoogleAuthProvider  } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { signInWithPopup} from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase";
 import { selectUserName, selectUserPhoto, setUserLogin, setSignOut } from "../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,12 +12,9 @@ function Header() {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  // console.log(userPhoto);
-
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        // console.log(user)
         dispatch(setUserLogin({
           name: user.displayName,
           email: user.email,
@@ -27,31 +23,30 @@ function Header() {
         navigate('/');
       }
     })
-  },[]) 
+  }, [])
 
   const signIn = () => {
     signInWithPopup(auth, provider)
-    .then((result) => {
-      let user = result.user;
-      // console.log(result);
-      dispatch(setUserLogin({
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-      }))
-      navigate('/');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((result) => {
+        let user = result.user;
+        dispatch(setUserLogin({
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        }))
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const signOut = () => {
     auth.signOut()
-    .then(() => {
-      dispatch(setSignOut());
-      navigate('/login');
-    })
+      .then(() => {
+        dispatch(setSignOut());
+        navigate('/login');
+      })
   }
 
   return (

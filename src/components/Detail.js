@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import db from "../firebase";
-import { getDoc, doc, onSnapshot, query, where, collection, querySnapshot } from "firebase/firestore";
-import Movies from "./Movies";
+import { getDoc, doc } from "firebase/firestore";
 
 function Detail() {
   const { id } = useParams();
@@ -26,8 +25,6 @@ function Detail() {
   useEffect(() => {
     fetchMovie();
   }, [id]);
-
-  console.log("Movie: ", movie)
 
   return (
     <Container>

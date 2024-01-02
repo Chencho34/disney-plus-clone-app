@@ -4,21 +4,21 @@ import { selectMovies } from '../features/movie/movieSlice'
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function Movies() {
+export default function Movies() {
   const movies = useSelector(selectMovies);
-  // console.log('this is movies', movies)
+
   return (
     <Container>
       <h4>Recomended for You</h4>
       <Content>
-        { movies &&
-          movies.map(({id, CardImg}) => {
-            return(
-            <Wrap key={id}>
-              <Link to={`/detail/${id}`}>
-                <img src={CardImg} />
-              </Link>
-            </Wrap>
+        {movies &&
+          movies.map(({ id, CardImg }) => {
+            return (
+              <Wrap key={id}>
+                <Link to={`/detail/${id}`}>
+                  <img src={CardImg} alt={`img: ${id}`} />
+                </Link>
+              </Wrap>
             )
           })
         }
@@ -26,8 +26,6 @@ function Movies() {
     </Container>
   );
 }
-
-export default Movies;
 
 const Container = styled.div``;
 
