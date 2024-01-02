@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 // import { getAuth, signInWithPopup, GoogleAuthProvider  } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
@@ -12,11 +12,28 @@ function Header() {
   const navigate = useNavigate();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-  
+
+  // console.log(userPhoto);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        // console.log(user)
+        dispatch(setUserLogin({
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        }))
+        navigate('/');
+      }
+    })
+  },[]) 
+
   const signIn = () => {
     signInWithPopup(auth, provider)
     .then((result) => {
       let user = result.user;
+      // console.log(result);
       dispatch(setUserLogin({
         name: user.displayName,
         email: user.email,
@@ -72,7 +89,7 @@ function Header() {
               <span>SERIES</span>
             </a>
           </NavMenu>
-          <UserImg onClick={signOut} src="/images/profile.png" />
+          <UserImg onClick={signOut} src={userPhoto} />
         </>
       )}
     </Nav>
@@ -145,11 +162,9 @@ const UserImg = styled.img`
 `;
 
 const LoginContainer = styled.div`
-flex: 1;
+ flex: 1;
  display: flex;
  justify-content: flex-end;
-
-
 `;
 
 const Login = styled.div`
@@ -168,4 +183,3 @@ const Login = styled.div`
     border-color: transparent;
   }
 `;
-

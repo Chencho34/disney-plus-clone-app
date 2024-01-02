@@ -9,77 +9,63 @@ function Detail() {
   const { id } = useParams();
   const [movie, setMovie] = useState();
 
-  // useEffect(() => {
-  //   db.collection("Movies")
-  //   .doc(id)
-  //   .get()
-  //   .the((doc) => {
-  //     if(doc.exists) {
-  //       setMovie(doc.data())
-  //     } else {
-
-  //     }
-  //   })
-  // }, [])
+  const fetchMovie = async () => {
+    try {
+      const docRef = doc(db, "Movies", id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setMovie(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.log("Error getting movie:", error);
+    }
+  }
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const docRef = doc(db, "Movies", id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setMovie(docSnap.data());
-        } else {
-          console.log("No such document!");
-        }
-      } catch (error) {
-        console.log("Error getting movie:", error);
-      }
-    };
     fetchMovie();
   }, [id]);
 
   console.log("Movie: ", movie)
 
-  // const {BackgroundImg,TitleImg} = movie;
-  
-  
   return (
     <Container>
-      {movie ? (
-        <React.Fragment>
-          <Background>
-            <img src={movie.BackgroundImg} alt="background-img"></img>
-          </Background>
-          <ImgTitle>
-            <img src={movie.TitleImg} alt="" />
-          </ImgTitle>
-          <Controls>
-            <PlayButton>
-              <img src="/images/play-icon-black.png" alt="play-icon" />
-              <span>PLAY</span>
-            </PlayButton>
-            <TrailerButton>
-              <img src="/images/play-icon-white.png" alt="play-icon" />
-              <span>Trailer</span>
-            </TrailerButton>
-            <AddButton>
-              <span>+</span>
-            </AddButton>
-            <GroupWatchButton>
-              <img src="/images/group-icon.png" alt="group-icon" />
-            </GroupWatchButton>
-          </Controls>
-          <Subtitle>
-            {movie.Genres}  
-          </Subtitle>
-          <Description>
-            {movie.Description}
-          </Description>
-        </React.Fragment>
-      ) : (
-        <p>Loading movie...</p>
-      )}
+      {
+        movie ? (
+          <React.Fragment>
+            <Background>
+              <img src={movie.BackgroundImg} alt="background-img"></img>
+            </Background>
+            <ImgTitle>
+              <img src={movie.TitleImg} alt="" />
+            </ImgTitle>
+            <Controls>
+              <PlayButton>
+                <img src="/images/play-icon-black.png" alt="play-icon" />
+                <span>PLAY</span>
+              </PlayButton>
+              <TrailerButton>
+                <img src="/images/play-icon-white.png" alt="play-icon" />
+                <span>Trailer</span>
+              </TrailerButton>
+              <AddButton>
+                <span>+</span>
+              </AddButton>
+              <GroupWatchButton>
+                <img src="/images/group-icon.png" alt="group-icon" />
+              </GroupWatchButton>
+            </Controls>
+            <Subtitle>
+              {movie.Genres}
+            </Subtitle>
+            <Description>
+              {movie.Description}
+            </Description>
+          </React.Fragment>
+        ) : (
+          <p>Loading movie...</p>
+        )}
     </Container>
   );
 }
