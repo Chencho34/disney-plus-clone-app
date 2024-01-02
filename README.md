@@ -61,3 +61,18 @@ npm i firebase
 npm i firebase-tools
 
 npm install -g node-firestore-import-export
+* [Styled-Components](https://styled-components.com/)
+
+* [react-slick](https://react-slick.neostack.com/)
+
+* [React Router Dom](https://www.npmjs.com/package/react-slick)
+
+* [Firebase](https://www.npmjs.com/package/firebase)
+`npm i firebase`
+`npm i firebase-tools`
+`npm i -g node-firestore-import-export`
+
+
+
+
+
