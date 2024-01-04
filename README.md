@@ -1,4 +1,6 @@
-# Project create with React App and Redux
+# Disney Plus Clone App
+
+## Project create with React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
@@ -22,6 +24,11 @@ This project is a clone of the Disney Plus app, developed with the Create React 
 * Implementation of React Router Dom for page routing.
 
 ## Screenshots
+
+![cap-home-disney-plus-clone-app](public/images/dp-cap-01.png)
+![cap-movies-disney-plus-clone-app](public/images/dp-cap-02.png)
+![cap-movie-plus-clone-app](public/images/dp-cap-03.png)
+![cap-login-plus-clone-app](public/images/dp-cap-04.png)
 
 ## Install
 
